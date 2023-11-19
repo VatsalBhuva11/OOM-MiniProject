@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.applet.*;
 import java.awt.*;
-import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,6 +23,8 @@ public class Add extends JPanel {
     JTextField t5;
     JTextField t6;
     JTextField t7;
+    JTextField t8;
+    JTextField t9;
 
     public Add() {
 
@@ -30,7 +32,7 @@ public class Add extends JPanel {
         Category c = new Category();
         Tag g = new Tag();
 
-        setLayout(new GridLayout(4, 3));
+        setLayout(new GridLayout(5, 3));
 
         // get input of doc name
         t = new JTextField("ENTER DOCUMENT NAME");
@@ -73,6 +75,16 @@ public class Add extends JPanel {
         t7.setEditable(true);
 
         JButton j4 = new JButton("PROCEED");
+
+        t8 = new JTextField("CLICK TO GO TO MAIN PAGE");
+        t8.setSize(300, 300);
+        t8.setEditable(true);
+
+        t9 = new JTextField("CLICK TO GO TO MAIN PAGE");
+        t9.setSize(300, 300);
+        t9.setEditable(true);
+
+        JButton j5 = new JButton("MAIN PAGE");
 
         j1.addActionListener(new ActionListener() {
             @Override
@@ -138,6 +150,26 @@ public class Add extends JPanel {
 
         });
 
+        j5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame jFrame = new JFrame();
+                jFrame.setTitle("CHOOSING PAGE");
+
+                Add a = new Add();
+                Container cPane = jFrame.getContentPane();
+                Newclass template = new Newclass(a, cPane);
+                jFrame.setSize(template.getSize());
+                jFrame.setResizable(false);
+                cPane.add(template);
+
+                jFrame.setVisible(true);
+                jFrame.setLocationRelativeTo(null);
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        });
+
         this.add(t);
         this.add(j1);
         this.add(t1);
@@ -150,6 +182,9 @@ public class Add extends JPanel {
         this.add(t6);
         this.add(j4);
         this.add(t7);
+        this.add(t8);
+        this.add(j5);
+        this.add(t9);
 
     }
 
