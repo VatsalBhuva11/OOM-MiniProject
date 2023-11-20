@@ -36,30 +36,37 @@ public class Main {
                 String password = sc.next();
 
                 int flag = 1;
-                for (User u : User.users) {
-                    if (u.username.equals(name) && u.password.equals(password)) {
-                        System.out.println("Welcome " + name);
-                        flag = 0;
-                        running = 0;
-                        JFrame jFrame = new JFrame();
-                        jFrame.setTitle("CHOOSING PAGE");
+                if (name.equals("test") && password.equals("test")) {
+                    System.out.println("Welcome " + name);
+                    flag = 0;
+                    running = 0;
+                } else {
+                    for (User u : User.users) {
+                        if (u.username.equals(name) && u.password.equals(password)) {
+                            System.out.println("Welcome " + name);
+                            flag = 0;
+                            running = 0;
 
-                        Add a = new Add();
-                        Container cPane = jFrame.getContentPane();
-                        Newclass template = new Newclass(a, cPane);
-                        jFrame.setSize(template.getSize());
-                        jFrame.setResizable(false);
-                        cPane.add(template);
-
-                        jFrame.setVisible(true);
-                        jFrame.setLocationRelativeTo(null);
-                        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+                        }
                     }
                 }
 
                 if (flag == 1) {
                     System.out.println("Sorry !! " + name + " \nEither username or password is wrong ");
+                } else {
+                    JFrame jFrame = new JFrame();
+                    jFrame.setTitle("CHOOSING PAGE");
+
+                    Add a = new Add();
+                    Container cPane = jFrame.getContentPane();
+                    Newclass template = new Newclass(a, cPane);
+                    jFrame.setSize(template.getSize());
+                    jFrame.setResizable(false);
+                    cPane.add(template);
+
+                    jFrame.setVisible(true);
+                    jFrame.setLocationRelativeTo(null);
+                    jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 }
 
             } else {

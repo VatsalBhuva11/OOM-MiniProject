@@ -1,9 +1,11 @@
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.io.*;
 import java.util.*;
 import java.applet.*;
 import java.awt.*;
-import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,7 +20,7 @@ import java.util.Scanner;
 public class Retreive extends JPanel {
 
     JTextField t;
-    JTextField t1;
+    JTextArea t1;
     JTextField t2;
     JTextField t3;
     JTextField t4;
@@ -31,24 +33,24 @@ public class Retreive extends JPanel {
     String topicOP;
     String categoryOP;
 
-    public static JLabel[] getAllDocs() {
-        JLabel[] docs = new JLabel[Document.counter];
+    public static Document[] getAllDocs() {
+        Document[] docs = new Document[Document.counter];
         for (int i = 0; i < Document.counter; i++) {
-            docs[i] = new JLabel(Document.doc_name[i]);
+            int x = i + 1;
+            docs[i] = new Document(Document.doc_name[i], x, Topic.topic[i], Category.category[i], Tag.tags[i]);
         }
         return docs;
     }
 
     public Retreive() {
 
-        Document d = new Document("Roys", 28);
         Topic tops = new Topic();
         Category c = new Category();
         Tag g = new Tag();
 
         setLayout(new GridLayout(5, 3));
 
-        if (d.counter == 0) {
+        if (Document.counter == 0) {
             System.out.println("There are no Documents currently for retreival ");
 
             JLabel label = new JLabel("There are no Documents currently for retreival ");
@@ -61,7 +63,7 @@ public class Retreive extends JPanel {
             t.setSize(300, 300);
             t.setEditable(true);
 
-            t1 = new JTextField(" ");
+            t1 = new JTextArea(" ");
             t1.setSize(300, 300);
             t1.setEditable(true);
 
@@ -110,13 +112,13 @@ public class Retreive extends JPanel {
             j1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String s1 = " ";
-                    for (int i = 0; i < d.counter; i++) {
+                    StringBuilder s1 = new StringBuilder();
+                    for (int i = 0; i < Document.counter; i++) {
                         int x = i + 1;
-                        s1 = s1 + "id: " + x + " Document Name: " + d.doc_name[i] + " ";
+                        s1 = s1.append("id: ").append(x).append(" Document Name: ").append(Document.doc_name[i])
+                                .append("\n");
                     }
-
-                    t1.setText(s1);
+                    t1.setText(s1.toString());
 
                 }
             });
@@ -150,7 +152,7 @@ public class Retreive extends JPanel {
 
                     int j = -1, k = -1;
 
-                    for (int i = 0; i < d.counter; i++) {
+                    for (int i = 0; i < Document.counter; i++) {
                         String s = tops.topic[i];
                         if (topicOP.equals(s)) {
                             j = i;
@@ -162,7 +164,7 @@ public class Retreive extends JPanel {
                         t7.setText("UNABLE TO FIND GIVEN TOPIC");
                     }
 
-                    for (int i = 0; i < d.counter; i++) {
+                    for (int i = 0; i < Document.counter; i++) {
                         String p = c.category[i];
                         if (categoryOP.equals(p)) {
                             k = i;
@@ -178,9 +180,9 @@ public class Retreive extends JPanel {
                         System.out.println("Retrieved the document successfully ");
                         System.out.println("Here is your document: ");
                         int g = j + 1;
-                        System.out.println("ID: " + g + "     Document Name: " + d.doc_name[j]);
+                        System.out.println("ID: " + g + "     Document Name: " + Document.doc_name[j]);
 
-                        t7.setText("RETREIEVED DOCUMENT: ID: " + g + "  Document Name: " + d.doc_name[j]);
+                        t7.setText("RETREIEVED DOCUMENT: ID: " + g + "  Document Name: " + Document.doc_name[j]);
                     } else {
                         System.out.println("Unable to retrieve the document ");
                         t7.setText("UNABLE TO FIND DOCUMENT");

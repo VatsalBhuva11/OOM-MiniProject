@@ -1,9 +1,11 @@
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.io.*;
 import java.util.*;
 import java.applet.*;
 import java.awt.*;
-import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,7 +20,7 @@ import java.util.Scanner;
 public class Edit extends JPanel {
 
     JTextField t;
-    JTextField t1;
+    JTextArea t1;
     JTextField t2;
     JTextField t3;
     JTextField t4;
@@ -32,14 +34,13 @@ public class Edit extends JPanel {
 
     public Edit() {
 
-        Document d = new Document("Roys", 28);
         Topic tops = new Topic();
         Category c = new Category();
         Tag g = new Tag();
 
         setLayout(new GridLayout(6, 3));
 
-        if (d.counter == 0) {
+        if (Document.counter == 0) {
             System.out.println("There are no Documents currently for editing ");
 
             JLabel label = new JLabel("There are no Documents currently for editing ");
@@ -52,8 +53,8 @@ public class Edit extends JPanel {
             t.setSize(300, 300);
             t.setEditable(true);
 
-            t1 = new JTextField(" ");
-            t1.setSize(300, 300);
+            t1 = new JTextArea(" ");
+            t.setSize(300, 300);
             t1.setEditable(true);
 
             JButton j1 = new JButton("PROCEED");
@@ -111,13 +112,13 @@ public class Edit extends JPanel {
             j1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String s1 = " ";
-                    for (int i = 0; i < d.counter; i++) {
+                    StringBuilder s1 = new StringBuilder();
+                    for (int i = 0; i < Document.counter; i++) {
                         int x = i + 1;
-                        s1 = s1 + "id: " + x + " Document Name: " + d.doc_name[i] + " ";
+                        s1 = s1.append("id: ").append(x).append(" Document Name: ").append(Document.doc_name[i])
+                                .append("\n");
                     }
-
-                    t1.setText(s1);
+                    t1.setText(s1.toString());
 
                 }
             });
@@ -128,7 +129,7 @@ public class Edit extends JPanel {
 
                     String s1 = t2.getText();
                     int j = Integer.parseInt(s1);
-                    t3.setText("DOCUMENT TO BE EDITED: " + d.doc_name[j - 1]);
+                    t3.setText("DOCUMENT TO BE EDITED: " + Document.doc_name[j - 1]);
 
                 }
 
@@ -141,8 +142,8 @@ public class Edit extends JPanel {
                     String s1 = t4.getText();
                     String s2 = t2.getText();
                     int j = Integer.parseInt(s2);
-                    d.doc_name[j - 1] = s1;
-                    t5.setText("NEW DOCUMENT NAME: " + d.doc_name[j - 1]);
+                    Document.doc_name[j - 1] = s1;
+                    t5.setText("NEW DOCUMENT NAME: " + Document.doc_name[j - 1]);
 
                 }
             });

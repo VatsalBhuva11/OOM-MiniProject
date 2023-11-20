@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -114,13 +116,25 @@ public class Newclass extends JPanel {
         buttonPanel.add(extra);
         buttonPanel.add(showDocuments);
 
-        JLabel[] docs = Retreive.getAllDocs();
+        DefaultTableModel model = new DefaultTableModel();
+        JTable table = new JTable(model);
+
+        model.addColumn("Id");
+        model.addColumn("Doc Name");
+        model.addColumn("Category");
+        model.addColumn("Tag");
+        model.addColumn("Topic");
+
+        model.addRow(new Object[] { "ID", "DOC NAME", "CATEGORY", "TAG", "TOPIC" });
+
+        Document[] docs = Retreive.getAllDocs();
         for (int i = 0; i < Document.counter; i++) {
             if (docs[i] != null) {
-                buttonPanel.add(docs[i]);
+                model.addRow(new Object[] { docs[i].DocumentID, docs[i].name, docs[i].category, docs[i].tag,
+                        docs[i].topic });
             }
         }
-
+        buttonPanel.add(table);
         this.add(buttonPanel, BorderLayout.CENTER);
 
     }
