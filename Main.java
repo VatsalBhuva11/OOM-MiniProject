@@ -55,7 +55,7 @@ public class Main {
                     System.out.println("Sorry !! " + name + " \nEither username or password is wrong ");
                 } else {
                     JFrame jFrame = new JFrame();
-                    jFrame.setTitle("CHOOSING PAGE");
+                    jFrame.setTitle("Home Page");
 
                     Add a = new Add();
                     Container cPane = jFrame.getContentPane();
