@@ -9,8 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TableView.TableRow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -118,6 +119,21 @@ public class Newclass extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel();
         JTable table = new JTable(model);
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                    boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row,
+                        column);
+                if (row == 0) {
+                    c.setBackground(Color.YELLOW);
+                    return c;
+                } else {
+                    c.setBackground(row % 2 == 0 ? Color.WHITE : Color.LIGHT_GRAY);
+                }
+                return c;
+            }
+        });
 
         model.addColumn("Id");
         model.addColumn("Doc Name");
@@ -134,9 +150,31 @@ public class Newclass extends JPanel {
                         docs[i].topic });
             }
         }
+
+        // Color ivory = new Color(255, 255, 208);
+        // table.setBackground(ivory);
+
         buttonPanel.add(table);
         this.add(buttonPanel, BorderLayout.CENTER);
 
+    }
+
+    class ColumnColorRenderer extends DefaultTableCellRenderer {
+        Color backgroundColor, foregroundColor;
+
+        public ColumnColorRenderer(Color backgroundColor, Color foregroundColor) {
+            super();
+            this.backgroundColor = backgroundColor;
+            this.foregroundColor = foregroundColor;
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+                int row, int column) {
+            Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            cell.setBackground(backgroundColor);
+            cell.setForeground(foregroundColor);
+            return cell;
+        }
     }
 
     public void next(Container cPane) {
