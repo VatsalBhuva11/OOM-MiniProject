@@ -179,7 +179,7 @@ public class Edit extends JPanel {
                 public void actionPerformed(ActionEvent e) {
 
                     JFrame jFrame = new JFrame();
-                    jFrame.setTitle("CHOOSING PAGE");
+                    jFrame.setTitle("Editing Document");
 
                     Add a = new Add();
                     Container cPane = jFrame.getContentPane();

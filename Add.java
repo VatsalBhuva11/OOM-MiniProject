@@ -145,7 +145,7 @@ public class Add extends JPanel {
                 addDocumentToList();
 
                 JFrame jFrame = new JFrame();
-                jFrame.setTitle("CHOOSING PAGE");
+                jFrame.setTitle("Adding Document");
 
                 Add a = new Add();
                 Container cPane = jFrame.getContentPane();
