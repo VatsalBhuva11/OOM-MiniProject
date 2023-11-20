@@ -30,6 +30,8 @@ public class Newclass extends JPanel {
         JButton addDocument = new JButton("ADD DOCUMENT");
         addDocument.setPreferredSize(new Dimension(100, 100)); // Set preferred size
         addDocument.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the button horizontally
+        addDocument.setBackground(Color.RED);
+        addDocument.setForeground(Color.YELLOW);
 
         buttonPanel.add(addDocument);
 
@@ -48,7 +50,8 @@ public class Newclass extends JPanel {
         JButton deleteDocument = new JButton("DELETE DOCUMENT");
         deleteDocument.setPreferredSize(new Dimension(100, 100)); // Set preferred size
         deleteDocument.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the button horizontally;
-        deleteDocument.setAlignmentY(BOTTOM_ALIGNMENT);
+        deleteDocument.setBackground(Color.RED);
+        deleteDocument.setForeground(Color.YELLOW);
 
         buttonPanel.add(deleteDocument);
 
@@ -67,6 +70,8 @@ public class Newclass extends JPanel {
         JButton editDocument = new JButton("EDIT DOCUMENT");
         editDocument.setPreferredSize(new Dimension(100, 100)); // Set preferred size
         editDocument.setAlignmentX(Component.CENTER_ALIGNMENT);
+        editDocument.setBackground(Color.RED);
+        editDocument.setForeground(Color.YELLOW);
 
         buttonPanel.add(editDocument);
 
@@ -85,6 +90,8 @@ public class Newclass extends JPanel {
         JButton retreiveDocument = new JButton("RETREIVE DOCUMENT");
         retreiveDocument.setPreferredSize(new Dimension(100, 100)); // Set preferred size
         retreiveDocument.setAlignmentX(Component.CENTER_ALIGNMENT);
+        retreiveDocument.setBackground(Color.RED);
+        retreiveDocument.setForeground(Color.YELLOW);
 
         buttonPanel.add(retreiveDocument);
 
