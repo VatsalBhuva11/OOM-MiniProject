@@ -25,12 +25,25 @@ public class Add extends JPanel {
     JTextField t7;
     JTextField t8;
     JTextField t9;
+    public static int[] checks = { 0, 0, 0 }; // name, topic, category
+
+    public void addDocumentToList() {
+        if (checks[0] == 1 && checks[1] == 1 && checks[2] == 1) {
+            String name = t.getText();
+            String topic = t2.getText();
+            String category = t4.getText();
+            String tag = t6.getText();
+
+            Document.doc_name[Document.counter] = name;
+            Topic.topic[Document.counter] = topic;
+            Category.category[Document.counter] = category;
+            Tag.tags[Document.counter] = tag;
+
+            Document.counter = Document.counter + 1;
+        }
+    }
 
     public Add() {
-
-        Topic top = new Topic();
-        Category c = new Category();
-        Tag g = new Tag();
 
         setLayout(new GridLayout(5, 3));
 
@@ -93,8 +106,7 @@ public class Add extends JPanel {
                 String s1 = t.getText();
                 // displau doc name on rhs
                 t1.setText("DOCUMENT NAME: " + s1);
-                // d[id] = docname
-                Document.doc_name[Document.counter] = s1;
+                checks[0] = 1;
             }
         });
 
@@ -104,7 +116,7 @@ public class Add extends JPanel {
 
                 String s1 = t2.getText();
                 t3.setText("TOPIC: " + s1);
-                top.topic[Document.counter] = s1;
+                checks[1] = 1;
             }
         });
 
@@ -114,8 +126,7 @@ public class Add extends JPanel {
 
                 String s1 = t4.getText();
                 t5.setText("CATEGORY: " + s1);
-                c.category[Document.counter] = s1;
-                Document.counter = Document.counter + 1;
+                checks[2] = 1;
             }
 
         });
@@ -131,7 +142,7 @@ public class Add extends JPanel {
                 System.out.print(Document.doc_name[i] + "\n");
                 String s1 = t6.getText();
                 t7.setText("TAGS: " + s1);
-                g.tags[Document.counter - 1] = s1;
+                addDocumentToList();
 
                 JFrame jFrame = new JFrame();
                 jFrame.setTitle("CHOOSING PAGE");
