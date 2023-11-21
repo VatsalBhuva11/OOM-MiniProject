@@ -134,15 +134,21 @@ public class Add extends JPanel {
         j4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.print("Current documents are: ");
-                int i;
-                for (i = 0; i < Document.counter - 1; i++) {
-                    System.out.print(Document.doc_name[i] + ", ");
-                }
-                System.out.print(Document.doc_name[i] + "\n");
                 String s1 = t6.getText();
                 t7.setText("TAGS: " + s1);
                 addDocumentToList();
+
+                System.out.print("Current documents are: ");
+                int i;
+                for (i = 0; i < Document.counter - 1; i++) {
+                    if (Document.doc_name[i] != null) {
+                        System.out.print(Document.doc_name[i] + ", ");
+                    }
+                }
+                if (Document.doc_name[i] != null) {
+                    System.out.print(Document.doc_name[i]);
+                }
+                System.out.println();
 
                 JFrame jFrame = new JFrame();
                 jFrame.setTitle("Adding Document");
