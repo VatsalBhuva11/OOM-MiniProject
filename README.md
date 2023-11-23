@@ -1,2 +1,35 @@
-# Document-Management-System
-A JAVA SWING based document management system
+# DOCUMENT MANAGEMENT SYSTEM
+
+Group: A28
+Project: 14
+Done By:
+
+1. Vatsal Bhuva (IIT2022004)
+2. Sugam Sareen (IIT2022002)
+3. Jatin Soni (IIT2022003)
+
+PLATFORMS: Mac/Windows/Linux with Java SDK installed.
+
+GITHUB LINK: `https://github.com/VatsalBhuva11/OOM-MiniProject`
+
+## Here are some of the basic guidelines to follow if you want to know the working of this particular project:
+
+1. Open any terminal in the directory of your project file
+
+2. type javac \*.java (this compiles all the java classes)
+
+3. type java Main (to start running the program)
+
+4. After this when the execution starts you can choose to : create a new user, login, exit.
+
+5. Incase you create a new user then you can enter your credentials to be stored and register you as a user, otherwise you can login to your existing account by verifying your credentials.
+
+6. After login a UI appears on your screen which allows you to perform several operations like adding, deleting, retrieving, editing the document.
+
+7. Adding a document: You have to fill the necessary information in each box and click the proceed button in the center after filling EACH field (trying to add a document with incomplete information will not add the document in the table). After filling all your information you will be redirected to the home page and your newly registered document will be visible in the table.
+
+8. Delete a document: Fill the necessary information for identifying and deleting the document. The first field let's you view the list of current documents. The subsequent fields require you to specify information about the document to delete. This information can be obtained from the retrieved list.
+
+9. Edit/Retrieve document: The same steps as above for deleting a document.
+
+## Thank You!
